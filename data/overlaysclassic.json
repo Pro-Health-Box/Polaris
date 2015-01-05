@@ -1,0 +1,435 @@
+{
+	identifier: "id",
+	
+	label: "name",
+	
+	items: [
+		
+		{ 
+			id: "labelgrp", 
+			name: "Labels", 
+			type: "group", 
+			show: true,
+			streets: [ 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ],
+			aerial: [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ],			
+			children: [
+			
+				{ _reference: "dims" }, 
+				{ _reference: "addrnos" }, 
+				{ _reference: "pids" }, 
+				{ _reference: "stlbls" }, 
+				{ _reference: "businesses" },
+				{ _reference: "pois" }
+			
+			]
+		},
+			
+			{ 
+				id: "dims", 
+				name: "Lot Dimensions", 
+				streets: [ 5 ],
+				aerial: [ 5 ]
+			},
+			
+			{ 
+				id: "addrnos", 
+				name: "Address No", 
+				streets: [ 6 ],
+				aerial: [ 6 ]
+			},
+			
+			{ 
+				id: "pids", 
+				name: "Parcel IDs", 
+				streets: [ 7 ],
+				aerial: [ 7 ]
+			},
+			
+			{ 
+				id: "stlbls", 
+				name: "Street Labels", 
+				streets: [ 3 ],
+				aerial: [ 4 ],
+				checked: true
+			},
+			
+			{ 
+				id: "businesses", 
+				name: "Businesses", 
+				streets: [ 8 ],
+				aerial: [ 8 ]
+			},
+				
+			{ 
+				id: "pois", 
+				name: "Points of Interest", 
+				streets: [ 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ],
+				aerial: [ 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
+			},
+		
+		{ 
+			id: "bndrygrp", 
+			name: "Boundaries", 
+			type: "group", 
+			show: true,
+			streets: [ 57, 32, 39, 80, 33, 43, 44, 42  ], 
+			aerial: [ 58, 32, 39, 81, 33, 43, 44, 42 ], 
+			trans: [ 27, 79 ],
+			children: [
+			
+				{ _reference: "annex" },
+				{ _reference: "bldgs" },				
+				{ _reference: "commdist" }, 
+				{ _reference: "mundist" }, 
+				{ _reference: "sphrinflu" }, 
+				{ _reference: "taxparcels" }, 
+				{ _reference: "votprec" }, 
+				{ _reference: "zone" },
+				{ _reference: "zip" }
+							
+			]
+		},
+			
+			{ 
+				id: "annex", 
+				name: "Charlotte Annexation Areas", 
+				trans: [ 27 ]
+			},
+			
+			{ 
+				id: "bldgs", 
+				name: "Building Footprints", 
+				streets: [ 57 ],
+				aerial: [ 58 ]				
+			},
+			
+			{ 
+				id: "commdist", 
+				name: "County Commissioner Districts", 
+				streets: [ 32 ],
+				aerial: [ 32 ]				
+			},
+			
+			{ 
+				id: "mundist", 
+				name: "Municipal Service Districts", 
+				streets: [ 39 ],
+				aerial: [ 39 ]				
+			},
+				
+			{ 
+				id: "sphrinflu", 
+				name: "Spheres of Influence (City ETJs)", 
+				trans: [ 79 ]
+			},
+			
+			{ 
+				id: "taxparcels", 
+				name: "Tax Parcels", 
+				streets: [ 80 ],
+				aerial: [ 81 ],
+				checked: true
+			},
+				
+			{ 
+				id: "votprec", 
+				name: "Voter Precincts", 
+				streets: [ 33 ],
+				aerial: [ 33 ],
+			},
+			
+			{ 
+				id: "zone", 
+				name: "Zoning", 
+				streets: [ 43, 44 ],
+				aerial: [ 43, 44 ]
+			},
+			
+			{ 
+				id: "zip", 
+				name: "Zip Code Boundaries", 
+				streets: [ 42 ]		
+			},
+			
+		{ 
+			id: "envgrp", 
+			name: "Environmental", 
+			type: "group", 
+			show: true,
+			streets: [ 59, 71, 72, 50 ],
+			aerial: [ 59, 71, 72, 50 ],
+			trans: [ 63, 64, 65, 66, 60, 61 ],			
+			children: [
+			
+				{ _reference: "fldp" }, 
+				{ _reference: "postconstdist" }, 
+				{ _reference: "postconstbuff" }, 
+				{ _reference: "strmwtrsheds" }, 
+				{ _reference: "drnkwtrsheds" }, 
+				{ _reference: "soils" },
+				{ _reference: "wtrqulbuff" }
+			
+			]
+		},
+			
+			{ 
+				id: "fldp", 
+				name: "Community & FEMA Floodplains, Floodways", 
+				trans: [ 63, 64, 65, 66 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "postconstdist", 
+				name: "Post Construction Districts", 
+				streets: [ 59 ],
+				aerial: [ 59 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "postconstbuff", 
+				name: "Post Construction Buffers", 
+				trans: [ 60 ],
+				clone: false 
+			},
+				
+			{ 
+				id: "strmwtrsheds", 
+				name: "Stream Watersheds", 
+				streets: [ 71 ],
+				aerial: [ 71 ],
+				clone: true 
+			},
+				
+			{ 
+				id: "drnkwtrsheds", 
+				name: "Regulated Drinking Watersheds", 
+				streets: [ 72 ],
+				aerial: [ 72 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "soils", 
+				name: "Soils", 
+				streets: [ 50 ],
+				aerial: [ 50 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "wtrqulbuff", 
+				name: "Water Quality Buffers(SWIM)", 
+				trans: [ 61 ],
+				clone: true 		
+			},
+		
+		{ 
+			id: "histgrp", 
+			name: "Historical", 
+			type: "group",
+			show: true,			
+			streets: [ 36, 35, 37, 38 ],
+			aerial: [ 36, 35, 37, 38 ],
+			children: [
+			
+				{ _reference: "histcemeteries" }, 
+				{ _reference: "histdist" }, 
+				{ _reference: "histprop" }
+			
+			]
+		},
+			
+			{ 
+				id: "histcemeteries", 
+				name: "Historic Cemeteries", 
+				streets: [ 36 ],
+				aerial: [ 36 ]
+			},
+			
+			{ 
+				id: "histdist", 
+				name: "Historic Districts(Charlotte)", 
+				streets: [ 35 ],
+				aerial: [ 35 ]
+			},
+			
+			{ 
+				id: "histprop", 
+				name: "Historic Properties", 
+				streets: [ 37, 38 ],
+				aerial: [ 37, 38 ]
+			},
+		
+		{ 
+			id: "transgrp", 
+			name: "Transportation", 
+			type: "group", 
+			show: true,
+			streets: [ 28, 29, 40, 51, 56 ],
+			aerial: [ 28, 29, 40, 51, 56 ],
+			children: [
+			
+				{ _reference: "cats" }, 
+				{ _reference: "trafficcnts" }, 
+				{ _reference: "i485ext" },
+				{ _reference: "ncroads" }
+			
+			]
+		},
+			
+			{ 
+				id: "cats", 
+				name: "CATS Bus Routes and Stops", 
+				streets: [ 28, 29 ],
+				aerial: [ 28, 29 ]
+			},
+			
+			{ 
+				id: "trafficcnts", 
+				name: "NC DOT Traffic Counts", 
+				streets: [ 40 ],
+				aerial: [ 40 ]
+			},
+			
+			{ 
+				id: "i485ext", 
+				name: "I-485 NE Extension", 
+				streets: [ 51 ],
+				aerial: [ 51 ]
+			},
+			
+			{ 
+				id: "ncroads", 
+				name: "NC State Maintained Roads", 
+				streets: [ 56 ],
+				aerial: [ 56 ]
+			},
+		
+		{ 
+			id: "othrgrp", 
+			name: "Others", 
+			type: "group",
+			show: true,			
+			streets: [ 30, 31, 46, 47, 48, 49, 34, 45, 52, 53, 54, 55, 74, 78 ],
+			aerial: [ 30, 31, 46, 47, 48, 49, 34, 45, 52, 53, 54, 55, 74, 78 ],
+			trans: [ 75, 76, 77, 73 ],
+			children: [
+			
+				{ _reference: "censustracts" }, 
+				{ _reference: "censusblkgps" }, 
+				{ _reference: "urrow" }, 
+				{ _reference: "easements" }, 
+				{ _reference: "enggrid" },
+				{ _reference: "prelimplans" },
+				{ _reference: "fire" },
+				{ _reference: "salesbyyear" },
+				{ _reference: "landuse" },
+				{ _reference: "countyprop" },
+				{ _reference: "cityprop" },
+				{ _reference: "cmsprop" },
+				{ _reference: "monuments" },
+				{ _reference: "geodeticbuff" }
+			
+			]
+		},
+			
+			{ 
+				id: "censustracts", 
+				name: "Census Tracts", 
+				streets: [ 30 ],
+				aerial: [ 30 ]
+			},
+			
+			{ 
+				id: "censusblkgps", 
+				name: "Census Block Groups", 
+				streets: [ 31 ],
+				aerial: [ 31 ]
+			},
+			
+			{ 
+				id: "urrow", 
+				name: "Utility and Railroad Right of Ways", 
+				streets: [ 46, 47 ],
+				aerial: [ 46, 47 ],
+				checked: true
+			},
+			
+			{ 
+				id: "easements", 
+				name: "Easements - Interior Lot Lines", 
+				streets: [ 48, 49 ],
+				aerial: [ 48, 49 ]
+			},
+			
+			{ 
+				id: "enggrid", 
+				name: "Engineering Map Grid", 
+				streets: [ 34 ],
+				aerial: [ 34 ]
+			},
+			
+			{ 
+				id: "prelimplans", 
+				name: "Engineering Preliminary Plans", 
+				streets: [ 45 ],
+				aerial: [ 45 ]
+			},
+			
+			{ 
+				id: "fire", 
+				name: "Fire Stations and Districts", 
+				streets: [ 52, 53, 54 ],
+				aerial: [ 52, 53, 54 ]
+			},
+			
+			{ 
+				id: "salesbyyear", 
+				name: "Sales by Deed Year", 
+				streets: [ 74 ],
+				aerial: [ 74 ]
+			},
+			
+			{ 
+				id: "landuse", 
+				name: "Tax Parcel Landuse", 
+				streets: [ 78 ],
+				aerial: [ 78 ]
+			},
+			
+			{ 
+				id: "countyprop", 
+				name: "County owned Properties", 
+				trans: [ 75 ]
+			},
+			
+			{ 
+				id: "cityprop", 
+				name: "City owned Properties", 
+				trans: [ 76 ]
+			},
+			
+			{ 
+				id: "cmsprop", 
+				name: "CMS owned Properties", 
+				trans: [ 77 ]
+			},
+			
+			{ 
+				id: "monuments", 
+				name: "NC Geodetic Monuments", 
+				streets: [ 55 ],
+				aerial: [ 55 ]
+			},
+			
+			{ 
+				id: "geodeticbuff", 
+				name: "2000ft Geodetic Buffers", 
+				trans: [ 73 ]
+			}
+															
+	]
+	
+}

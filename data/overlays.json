@@ -1,0 +1,357 @@
+{
+	identifier: "id",
+	
+	label: "name",
+	
+	items: [
+		
+		{ 
+			id: "labelgrp", 
+			name: "Labels",
+			type: "group", 
+			show: true,
+			streets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ], 
+			children: [
+			
+				{ _reference: "dims" }, 
+				{ _reference: "addrnos" }, 
+				{ _reference: "pids" }, 
+				{ _reference: "businesses" },
+				{ _reference: "pois" }
+			
+			]
+		},
+			
+			{ 
+				id: "dims", 
+				name: "Lot Dimensions", 
+				streets: [ 0 ]
+			},
+			
+			{ 
+				id: "addrnos", 
+				name: "Address No", 
+				streets: [ 1 ]
+			},
+			
+			{ 
+				id: "pids", 
+				name: "Parcel IDs", 
+				streets: [ 2 ]
+			},
+			
+			{ 
+				id: "businesses", 
+				name: "Businesses", 
+				streets: [ 3 ]
+			},
+				
+			{ 
+				id: "pois", 
+				name: "Points of Interest", 
+				streets: [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ]
+			},
+		
+		{ 
+			id: "bndrygrp", 
+			name: "Boundaries", 
+			type: "group", 
+			show: true,
+			streets: [ 18, 22, 23, 30, 34, 36, 37, 38 ], 
+			children: [
+			
+				{ _reference: "annex" }, 
+				{ _reference: "commdist" }, 
+				{ _reference: "mundist" }, 
+				{ _reference: "sphrinflu" }, 
+				{ _reference: "votprec" }, 
+				{ _reference: "zone" },
+				{ _reference: "zip" }
+			
+			]
+		},
+			
+			{ 
+				id: "annex", 
+				name: "Charlotte Annexation Areas", 
+				streets: [ 18 ]
+			},
+			
+			{ 
+				id: "commdist", 
+				name: "County Commissioner Districts", 
+				streets: [ 22 ]
+			},
+			
+			{ 
+				id: "mundist", 
+				name: "Municipal Service Districts", 
+				streets: [ 30 ]
+			},
+				
+			{ 
+				id: "sphrinflu", 
+				name: "Spheres of Influence (City ETJs)", 
+				streets: [ 34 ]
+			},
+				
+			{ 
+				id: "votprec", 
+				name: "Voter Precincts", 
+				streets: [ 23 ]
+			},
+			
+			{ 
+				id: "zone", 
+				name: "Zoning", 
+				streets: [ 37, 38 ]
+			},
+			
+			{ 
+				id: "zip", 
+				name: "Zip Code Boundaries", 
+				streets: [ 36 ]		
+			},
+		
+		{ 
+			id: "envgrp", 
+			name: "Environmental", 
+			type: "group", 
+			show: true,
+			streets: [ 17, 35, 41, 48 ],
+			trans: [ 50, 51, 52, 53, 54, 55 ],			
+			children: [
+			
+				{ _reference: "fldp" }, 
+				{ _reference: "postconstdist" }, 
+				{ _reference: "postconstbuff" }, 
+				{ _reference: "strmwtrsheds" }, 
+				{ _reference: "drnkwtrsheds" }, 
+				{ _reference: "soils" },
+				{ _reference: "wtrqulbuff" }
+			
+			]
+		},
+			
+			{ 
+				id: "fldp", 
+				name: "Community & FEMA Floodplains, Floodways", 
+				trans: [ 52, 53, 54, 55 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "postconstdist", 
+				name: "Post Construction Districts", 
+				streets: [ 17 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "postconstbuff", 
+				name: "Post Construction Buffers", 
+				trans: [ 50 ],
+				clone: false 
+			},
+				
+			{ 
+				id: "strmwtrsheds", 
+				name: "Stream Watersheds", 
+				streets: [ 35 ],
+				clone: true 
+			},
+				
+			{ 
+				id: "drnkwtrsheds", 
+				name: "Regulated Drinking Watersheds", 
+				streets: [ 48 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "soils", 
+				name: "Soils", 
+				streets: [ 41 ],
+				clone: true 
+			},
+			
+			{ 
+				id: "wtrqulbuff", 
+				name: "Water Quality Buffers(SWIM)", 
+				trans: [ 51 ],
+				clone: true 		
+			},
+		
+		{ 
+			id: "histgrp", 
+			name: "Historical", 
+			type: "group",
+			show: true,			
+			streets: [ 25, 26, 27, 28 ],
+			children: [
+			
+				{ _reference: "histcemeteries" }, 
+				{ _reference: "histdist" }, 
+				{ _reference: "histprop" }
+			
+			]
+		},
+			
+			{ 
+				id: "histcemeteries", 
+				name: "Historic Cemeteries", 
+				streets: [ 26 ]
+			},
+			
+			{ 
+				id: "histdist", 
+				name: "Historic Districts(Charlotte)", 
+				streets: [ 25 ]
+			},
+			
+			{ 
+				id: "histprop", 
+				name: "Historic Properties", 
+				streets: [ 27, 28 ]
+			},
+		
+		{ 
+			id: "transgrp", 
+			name: "Transportation", 
+			type: "group", 
+			show: true,
+			streets: [ 19, 20, 31, 42, 47 ],
+			children: [
+			
+				{ _reference: "cats" }, 
+				{ _reference: "trafficcnts" }, 
+				{ _reference: "i485ext" },
+				{ _reference: "ncroads" }
+			
+			]
+		},
+			
+			{ 
+				id: "cats", 
+				name: "CATS Bus Routes and Stops", 
+				streets: [ 19, 20 ]
+			},
+			
+			{ 
+				id: "trafficcnts", 
+				name: "NC DOT Traffic Counts", 
+				streets: [ 31 ]
+			},
+			
+			{ 
+				id: "i485ext", 
+				name: "I-485 NE Extension", 
+				streets: [ 42 ]
+			},
+			
+			{ 
+				id: "ncroads", 
+				name: "NC State Maintained Roads", 
+				streets: [ 47 ]
+			},
+		
+		{ 
+			id: "othrgrp", 
+			name: "Others", 
+			type: "group",
+			show: true,			
+			streets: [ 21, 24, 29, 32, 33, 39, 40, 43, 44, 45, 46 ],
+			trans: [ 56, 57, 58 ,59 ],
+			children: [
+			
+				{ _reference: "censustracts" }, 
+				{ _reference: "easements" }, 
+				{ _reference: "enggrid" },
+				{ _reference: "prelimplans" },
+				{ _reference: "fire" },
+				{ _reference: "salesbyyear" },
+				{ _reference: "landuse" },
+				{ _reference: "countyprop" },
+				{ _reference: "cityprop" },
+				{ _reference: "cmsprop" },
+				{ _reference: "monuments" },
+				{ _reference: "geodeticbuff" }
+			
+			]
+		},
+			
+			{ 
+				id: "censustracts", 
+				name: "Census Tracts", 
+				streets: [ 21 ]
+			},
+			
+			{ 
+				id: "easements", 
+				name: "Easements - Interior Lot Lines", 
+				streets: [ 39, 40 ]
+			},
+			
+			{ 
+				id: "enggrid", 
+				name: "Engineering Map Grid", 
+				streets: [ 24 ]
+			},
+			
+			{ 
+				id: "prelimplans", 
+				name: "Engineering Preliminary Plans", 
+				streets: [ 32 ]
+			},
+			
+			{ 
+				id: "fire", 
+				name: "Fire Stations and Districts", 
+				streets: [ 43, 44, 45 ]
+			},
+			
+			{ 
+				id: "salesbyyear", 
+				name: "Sales by Deed Year", 
+				streets: [ 33 ]
+			},
+			
+			{ 
+				id: "landuse", 
+				name: "Tax Parcel Landuse", 
+				streets: [ 29 ]
+			},
+			
+			{ 
+				id: "countyprop", 
+				name: "County owned Properties", 
+				trans: [ 57 ]
+			},
+			
+			{ 
+				id: "cityprop", 
+				name: "City owned Properties", 
+				trans: [ 58 ]
+			},
+			
+			{ 
+				id: "cmsprop", 
+				name: "CMS owned Properties", 
+				trans: [ 59 ]
+			},
+			
+			{ 
+				id: "monuments", 
+				name: "NC Geodetic Monuments", 
+				streets: [ 46 ]
+			},
+			
+			{ 
+				id: "geodeticbuff", 
+				name: "2000ft Geodetic Buffers", 
+				trans: [ 56 ]
+			}
+															
+	]
+	
+}

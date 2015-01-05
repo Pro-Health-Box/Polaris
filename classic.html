@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+	
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Polaris 3G</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- api CSS -->
+		<link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.12/dijit/themes/tundra/tundra.css">
+			
+		<!-- plugin CSS -->
+		<link rel="stylesheet" href="js/vendor/cbtree/themes/tundra/tundra.css">
+		<link rel="stylesheet" href="http://mapserver.mecklenburgcountync.gov/mojo/css/mojo.css?foo=99999" />
+		
+		<!-- app CSS -->
+		<link rel="stylesheet" href="css/main.css?foo=99999" />
+				       
+    </head>
+    <body class="tundra">
+	
+		<!-- Prompt IE<8 users to install Chrome Frame. -->
+		<!--[if lt IE 8]>
+			<div id="oldbrowserwarn">You are using an outdated browser. <a href="http://whatbrowser.org/">Upgrade your browser </a> for a better experience.</div>
+		<![endif]-->
+		
+		<!-- Map -->
+		<div id="map" class="unselectable">
+			
+			<!-- Search -->
+			<div id="searchcont" class="shadow">
+			
+				<div id="mainsearchcont" >
+				</div>
+					
+				<div id="searchclear" class="unspin" >
+				</div>
+				
+				<div id="searchprogress" class="spin hidden">
+				</div>
+				
+				<div id="searchbtn" >
+				</div>
+					
+				<div id="searchoptions" >
+				
+					<div class="cont alignleft hidden-mobile">
+						<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );">Advanced Search</a>
+					</div>
+					<div class="cont alignleft mobile">
+						<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );">Adv Search</a>
+					</div>					
+					<div class="cont alignleft hidden-mobile">
+						<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );">Market Analysis</a>
+					</div>	
+					<div class="cont alignleft mobile">
+						<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );">Mrkt Analysis</a>
+					</div>
+					<div class="cont alignleft hidden-mobile">
+						<a href="javascript:void(0);" onclick="toggleSearchHelp()">Search Help</a>
+					</div>	
+					<div class="cont alignleft mobile">
+						<a href="javascript:void(0);" onclick="toggleSearchHelp()">Srch Help</a>
+					</div>
+					
+					<div class="fixalign"></div>
+					<div id="searchhelp" class="hidden">
+					
+						<div class="cont fancycont closeable round">
+					
+							<div id="searchhelpclose" class="textright cont">
+								<img src="image/red-close.png" />
+							</div>
+												
+							<div>
+								<img src="image/tip.png" class="alignleft"/>
+								<div style="margin-left: 42px;">
+								
+									<h5>Tip 1:</h5>
+									<div>
+										Use the Search box to find your location. Just type the first part of what you're looking for 
+										and let the search control do the work for you. As an example, try typing 700 n. Then use your 
+										keyboard or mouse to select your match. You can search for:
+									</div>	
+									<ul>
+										<li>Addresses</li>
+										<li>Parcel IDs (needs atleast the first 6 digits)</li>
+										<li>GIS IDs (needs the full C number)</li>
+										<li>Owner Names (should be entered as Last Name, First Name)</li>
+										<li>Road Names (adding prefix and suffix refines search)</li>
+										<li>Landmarks (Parks, Libraries, Businesses, and others)</li>
+									</ul>
+								</div>
+							</div>
+
+							<div>
+								<img src="image/tip.png" class="alignleft"/>
+								<div style="margin-left: 42px;">						
+									<h5>Tip 2:</h5>
+									<div>
+										If nothing comes up in the dropdown list, click on the "Search Button" or just	
+										hit the "Enter" key in your keyboard to do a fall back search. The fallback search tries to find:
+									</div>	
+									<ul>
+										<li>Addresses (addresses without house numbers are acceptable)</li>
+										<li>Parcel IDs (needs all 8 digits)</li>
+										<li>GIS IDs (needs full C number)</li>
+									</ul>
+								
+								</div>	
+															
+							</div> 
+							
+						</div>	
+						
+					</div>
+					
+				</div>
+							
+			</div>
+					
+			<!-- Toolbox -->
+			<div id="toolbox">
+			</div>
+											
+			<!-- Basemap Toggle -->
+			<div id="basemapswitch">
+			</div>
+			
+			<!-- Searching GIF -->
+			<div id="searching" class="spin hidden">
+				<img src="image/loading.gif" />
+			</div>
+												
+		</div>
+		
+		<!-- Aside -->
+		<div id="aside" class="shadow">
+		
+			<!-- Header -->
+			<div id="header" class="unselectable">
+			</div>
+			
+			<!-- Menu -->
+			<div id="menu" class="textcenter cont unselectable" >
+			
+				<div class="linkcont alignleft">
+					<a href="http://www.youtube.com/playlist?list=PL1A98E7E1AC6271C1" target="_blank">Video Tutorials</a>
+				</div>
+							
+				<div class="linkcont alignleft">
+					<a href="data/POLARIS3GQUICKTIPS.pdf" target="_blank">Quick Tips</a>
+				</div>
+				
+				<div class="linkcont alignleft">
+					<a href="javascript:void(0);" onclick="showIssueForm();">Report Issue</a>
+				</div>
+				
+				<div class="fixalign"></div>
+				
+				<div id="issue" class="round fancycont closeable cont hidden">
+				
+					<div id="issueclose" class="textright cont">
+						<img src="image/red-close.png" />
+					</div>
+				
+					<table>
+						
+						<tr>
+							<th>
+								<label for="issuename">Name&nbsp;<span class='note'>*</span></label>
+							</th>
+							<td>
+								<input type="text" id="issuename" class="max"/>
+							</td>
+						</tr>
+						
+						<tr>
+							<th>
+								<label for="issueemail">Email&nbsp;<span class='note'>*</span></label>
+							</th>
+							<td>
+								<input type="text" id="issueemail" class="max"/>
+							</td>
+						</tr>
+						
+						<tr>
+							<th>
+								<label for="issuedesc">Problem Description&nbsp;<span class='note'>*</span></label>
+							</th>
+							<td>
+								<textarea id="issuedesc" class="max" rows="10"></textarea>
+							</td>
+						</tr>	
+													
+					</table>
+
+					<div>
+							
+						<div id="issueerror" class="searcherror alignright textleft"></div>
+						<div class="fixalign textright">
+							<input type="button" id="issueclear" value="Clear">&nbsp;
+							<input type="button" id="issuebtn" value="Post"  />
+						</div>	
+						
+					</div>					
+									
+				</div>
+								
+			</div>
+						
+			<!-- Navigation -->
+			<div class="cont">
+				
+				<div id="navredoanalysis" class="navcont alignleft hidden">
+					<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );" class="btnlink">Redo Analysis</a>
+				</div>
+				
+				<div id="navredoadvsearch" class="navcont alignleft hidden">
+					<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );" class="btnlink">Redo Search</a>
+				</div>
+				
+				<div id="navsrchresults" class="navcont alignleft hidden">
+					<a href="javascript:void(0);" onclick="showDiv ( 'searchresults' );" class="btnlink"><span class="hidden-mobile">Search </span>Results</a>
+				</div>
+				
+				<div id="navpropdetails" class="navcont alignleft hidden">
+					<a href="javascript:void(0);" onclick="showDiv ( 'propdetails' );" class="btnlink" >Prop<span class="hidden-mobile">erty</span> Details</a>
+				</div>
+				
+				<div id="navlayers" class="navcont alignleft hidden">
+					<a class="btnlink" href="javascript:void(0);"  onclick="showDiv ( 'layers' );showTip ( 'toomanylayers' );">Layers<span class="hidden-mobile">/Labels</span></a>
+				</div>
+
+				<div id="navdictionary" class="navcont alignleft">
+					<a href="javascript:void(0);" onclick="window.open('maplayers_dictionary.html', 'MapLayer_Dictionary', 'location=1,status=1,scrollbars=1,width=620,height=650');" class="btnlink">Lyr Dictionary</a>
+				</div>
+				
+				<div id="navlegend" class="navcont alignleft">
+					<a class="btnlink" href="javascript:void(0);" onclick="showDiv ( 'legend' );">Legend</a>
+				</div>
+				
+				<div id="navpropinforeport" class="navcont alignleft hidden">
+					<a id="clickpropinforeport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Summary</a>
+				</div>
+						
+				<div id="navpropreport" class="navcont alignleft hidden">
+					<a id="clickpropreport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Report</a>
+				</div>					
+				
+				<div id="navdeedreport" class="navcont alignleft hidden">
+					<a id="clickdeedreport" href="javascript:void(0);" class="btnlink" target="_blank">Deed Report</a>
+				</div>					
+				
+				<div id="navdeedcsv" class="navcont alignleft hidden">
+					<a id="clickdeedcsv" href="javascript:void(0);" class="btnlink" target="_blank">Deed CSV</a>
+				</div>
+				
+				<div id="navzoomprop" class="navcont alignleft hidden">
+					<a href="javascript:void(0);" onclick="zoom.toSelectedParcel();" class="btnlink">Zoom<span class="hidden-mobile"> To</span></a>
+				</div>
+											
+				<div class="fixalign"></div>
+				
+			</div>
+	
+			<!-- Data -->
+			<div id="datamain">
+																
+				<!-- Error -->
+				<div id="error" class="unselectable cont note textcenter hidden">
+					<img src='image/sadface.png' />
+					No Results found!
+				</div>
+				
+				<!-- Tip -->
+				<div id="tip" class="unselectable cont advisory textcenter hidden hidden-mobile">
+				</div>
+				
+				<!-- Layer List -->
+				<div id="layers" class="unselectable">
+										
+					<div class="shadow round fancycont first">
+					
+						<h4>Overlay Toggle</h4>
+													
+						<div id="layerstree" class="cont unselectable">
+						</div>
+							
+					</div>	
+										
+				</div>	
+				
+				<!-- Legend -->
+				<div id="legend" class="unselectable hidden">
+										
+					<!-- Overlay Legend -->
+					<div class="shadow round fancycont first">
+					
+						<h4>Overlay Legend</h4>
+												
+						<div id="overlaylegend" class="cont">
+						</div>
+						
+					</div>	
+					
+					<!-- Basemap Legend -->
+					<div class="shadow round fancycont first">
+					
+						<h4>Basemap Legend</h4>
+												
+						<div id="basemaplegend" class="cont">
+						</div>
+						
+					</div>	
+														
+				</div>
+				
+				<!-- Search Results -->
+				<div id="searchresults" class="ircont hidden">
+					
+					<div id="error" class="unselectable cont note textcenter">
+						<img src='image/sadface.png' />
+						No Search Results available!
+					</div>
+					
+				</div>
+				
+				<!-- Identify Layers -->
+				<div id="idlayers" class="hidden">
+				
+					<div class="shadow round fancycont first">
+				
+						<h4>Location</h4>
+					
+						<div id="idlayerloccont" class="cont">
+						</div>
+						
+					</div>
+					
+					<div class="shadow round fancycont first">
+				
+						<h4>Drill Down Layer List</h4>
+						
+						<div class="cont note">
+							Choose a layer from the dropdown to see field values.
+						</div>
+												
+						<div class="cont">
+							<select id="idlayerlist" class="max">
+								<option value="0" selected>Jurisdictions</option> 
+								<option value="1">Master Address Table</option>
+								<option value="2">Streets</option>
+								<option value="3">Building Footprints</option>
+								<option value="4">Spheres of Influence</option>
+								<option value="5">Voter Precincts</option>
+								<option value="6">Zoning</option>
+								<option value="7">Zipcodes</option>
+								<option value="8">FEMA Floodplain</option>
+								<option value="9">Community Floodplain</option>
+								<option value="10">Post Construction Districts</option>
+								<option value="11">Post Construction Buffers</option>
+								<option value="12">Stream Watersheds</option>
+								<option value="13">Regulated Drinking Watersheds</option>
+								<option value="14">Water Quality Buffers</option>
+								<option value="15">Census Tracts</option> 
+								<option value="16">Engineering Grid</option> 
+								<option value="17">Engineering Preliminary Plans</option> 
+								<option value="18">NC Geodetic Monuments</option>
+							</select>
+						</div>
+						
+					</div>	
+					
+					<div class="shadow round fancycont first">
+				
+						<h4>Fields</h4>
+					
+						<div id="idlayerdatacont" class="cont">
+						</div>
+						
+					</div>	
+					
+				</div>
+				
+				<!-- Point of Interest -->
+				<div id="poi" class="hidden">
+				
+					<div class="shadow round fancycont first">
+				
+						<h4>Point of Interest</h4>
+					
+						<div id="poicont" class="cont">
+						</div>
+						
+					</div>
+				
+				</div>
+				
+				<!-- Advanced Search -->
+				<div id="advsearch" class="hidden">
+				
+					<!-- Tax Situs Address Search -->
+					<div class="shadow round fancycont first">
+				
+						<h4>Tax Situs Address Search</h4>
+					
+						<div id="situsaddrsearch" class="cont">
+														
+							<table>
+							
+								<tr>
+									<th>
+										<label for="situsaddrno">House No</label>
+									</th>
+									<td>
+										<input type="text" id="situsaddrno" placeholder="Optional" class="medium">
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label for="situsprefix">Prefix</label>
+									</th>
+									<td>
+										<select id="situsprefix" class="small">
+											<option value="" selected></option>
+											<option value="N">North</option>
+											<option value="E">East</option>
+											<option value="W">West</option>
+											<option value="S">South</option>
+										</select>
+									</td>
+								</tr>	
+								<tr>
+									<th>
+										<label for="situsst">Street</label>
+									</th>
+									<td>
+										<div id="situsstCont"></div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">&nbsp;</td>
+								</tr>
+								<tr>
+									<th>
+										<label for="situssttype">Street Type</label>
+									</th>
+									<td>
+										<select id="situssttype" class="small">
+											<option value="" selected></option>
+											<option value="AL">AL</option>
+											<option value="AV">AV</option>
+											<option value="BV">BV</option>
+											<option value="BY">BY</option>
+											<option value="CR">CR</option>
+											<option value="CS">CS</option>
+											<option value="CT">CT</option>
+											<option value="CV">CV</option>
+											<option value="DR">DR</option>
+											<option value="HY">HY</option>
+											<option value="LN">LN</option>
+											<option value="LP">LP</option>
+											<option value="PL">PL</option>
+											<option value="PY">PY</option>
+											<option value="RA">RA</option>
+											<option value="RD">RD</option>
+											<option value="RN">RN</option>
+											<option value="RW">RW</option>
+											<option value="ST">ST</option>
+											<option value="TC">TC</option>
+											<option value="TL">TL</option>
+											<option value="TR">TR</option>
+											<option value="WY">WY</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label for="situssuffix">Suffix</label>
+									</th>
+									<td>
+										<select id="situssuffix" class="small">
+											<option value="" selected></option>
+											<option value="PVT">PVT</option>
+											<option value="EAST">EAST</option>    
+											<option value="EXT">EXT</option>     
+											<option value="NORTH">NORTH</option>   
+											<option value="SOUTH">SOUTH</option>   
+											<option value="WEST">WEST</option>	
+										</select>	
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label for="situsmuni">Jurisdiction</label>
+									</th>
+									<td>
+										<select id="situsmuni" class="max">	
+											<option value="" selected></option>
+											<option value="CHARLOTTE">Charlotte</option>
+											<option value="CORNELIUS">Cornelius</option>
+											<option value="DAVIDSON">Davidson</option>
+											<option value="HUNTERSVILLE">Huntersville</option>
+											<option value="MATTHEWS">Matthews</option>
+											<option value="MINT HILL">Mint Hill</option>
+											<option value="PINEVILLE">Pineville</option>
+											<option value="STALLINGS">Stallings</option>
+											<option value="UNINC">Mecklenburg</option>
+										</select>	
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div id="situssearcherror" class="alignleft searcherror"></div>
+										<div class="alignright">
+											<img id="situssearchprogress" class="spin hidden" src="image/spin.gif" />
+											<input type="button" id="situssearchclear" value="Clear">&nbsp;
+											<input type="button" id="situssearchbtn" value="Search">
+										</div>	
+										<div class="fixalign"></div>
+									</td>
+								</tr>
+							</table>
+														
+						</div>
+						
+					</div>
+				
+					<!-- Owner Search -->
+					<div class="shadow round fancycont first">
+				
+						<h4>Owner Search</h4>
+					
+						<div id="ownersearch" class="cont">
+						
+							<table>
+								<tr>
+									<th>
+										<label for="lastname">Last Name / Business Name</label>
+									</th>
+									<td>
+										<input type="text" id="lastname" class="max" placeholder="Required">
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										<label for="lastname">First Name</label>
+									</th>
+									<td>
+										<input type="text" id="firstname" class="max" placeholder="Optional">
+									</td>	
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div id="onamesearcherror" class="alignleft searcherror"></div>
+										<div class="alignright">
+											<img id="onamesearchprogress" class="spin hidden" src="image/spin.gif" />
+											<input type="button" id="onamesearchclear" value="Clear">&nbsp;
+											<input type="button" id="onamesearchbtn" value="Search">
+										</div>	
+										<div class="fixalign"></div>
+									</td>
+								</tr>
+							</table>
+														
+						</div>
+						
+					</div>
+
+					<!-- Buffer Search -->
+					<div class="shadow round fancycont first">
+				
+						<h4>Buffer Search</h4>
+					
+						<div id="buffersearch" class="cont">
+						
+							<table>
+								<tr>
+									<th>
+										<label for="buffersize">Buffer Size</label>
+									</th>
+									<td>
+										<input type="text" id="buffersize" class="medium" placeholder="Required" />&nbsp;ft
+										<span class="note">(Should be within (1-5280) ft.)</span>
+									</td>	
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div id="buffersearcherror" class="alignleft searcherror"></div>
+										<div class="alignright">
+											<img id="buffersearchprogress" class="spin hidden" src="image/spin.gif" />
+											<input type="button" id="buffersearchclear" value="Clear">&nbsp;
+											<input type="button" id="buffersearchbtn" value="Search">
+										</div>	
+										<div class="fixalign"></div>
+									</td>
+								</tr>
+							</table>
+														
+						</div>
+						
+					</div>						
+						
+					<!-- Preliminary Plan Search -->
+					<div class="shadow round fancycont first">
+				
+						<h4>Preliminary Plan Search</h4>
+												
+						<div class="cont">
+						
+							<table>
+								<tr>
+									<td>
+										<select id="prelimplansearch" class="max"></select>
+									</td>	
+									<td class="right">
+										<input type="button" id="prelimplansearchbtn" value="Search">
+									</td>	
+								</tr>
+							</table>	
+							
+						</div>
+						
+					</div>	
+					
+					<!-- Engineering Grid Search -->
+					<div class="shadow round fancycont first">
+				
+						<h4>Engineering Grid Search</h4>
+												
+						<div class="cont">
+						
+							<table>
+								<tr>
+									<td>
+										<select id="enggridsearch" class="max"></select>
+									</td>	
+									<td class="right">
+										<input type="button" id="enggridsearchbtn" value="Search">
+									</td>	
+								</tr>
+							</table>	
+																				
+						</div>
+						
+					</div>
+																	
+				</div>
+					
+				<!-- Market Analysis -->
+				<div id="marketanalysis" class="hidden">
+				
+					<div class="shadow round fancycont first">
+				
+						<h4>Market Analysis</h4>
+												
+						<div class="cont">
+						
+							<table id="mrktanlysform">
+								<tr>
+									<th>
+										Primary Search Type
+									</th>	
+									<td>
+										<select id="primarysrchtype" class="max">
+											<option value="0">Jurisdiction</option>
+											<option value="1">Appraisal Neighborhood Code</option>
+											<option value="2">Street Name</option>
+											<option value="3">Buffer Selected Property</option>
+										</select>
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Jurisdiction
+									</th>	
+									<td>
+										<select id="jurisdiction" class="max">
+											<option value="1" selected>Charlotte</option>
+											<option value="2">Davidson</option>
+											<option value="3">Cornelius</option>
+											<option value="4">Pineville</option>
+											<option value="5">Matthews</option>
+											<option value="6">Huntersville</option>
+											<option value="7">Mint Hill</option>
+											<option value="8">Stallings</option>
+											<option value="0">UNINC Mecklenburg Co</option>
+										</select>
+									</td>	
+								</tr>
+								<tr class="hidden">
+									<th>
+										Neighborhood Code
+									</th>	
+									<td>
+										<input id="neighborcode" class="small" />
+									</td>	
+								</tr>
+								<tr class="hidden">
+									<th>
+										Street Name
+									</th>	
+									<td>
+										<div id="stnameCont" ></div>
+									</td>	
+								</tr>
+								<tr class="hidden">
+									<th>
+										Buffer Size
+									</th>	
+									<td>
+										<input id="anlysbuffsize" class="small" />&nbsp;ft
+										<span class="note">(Should be within (1-5280) ft.)</span>
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Property Use
+									</th>	
+									<td>
+										<select id="propuse" class="max">
+											<option value="Attached Res">Condominium / Attached Residence</option>
+											<option value="Commercial">Commercial</option>
+											<option value="Govt-Inst">Govt-Inst</option>
+											<option value="Hotel/Motel">Hotel / Motel</option>
+											<option value="Manufactured">Manufactured Home</option>
+											<option value="Multi-Family">Multi-Family</option>
+											<option value="Office">Office</option>
+											<option value="Single-Fam" selected>Single-Family</option>
+											<option value="StadiumArena">Stadium/Arena</option>
+											<option value="Vacant">Vacant Land</option>
+											<option value="Warehouse">Warehouse</option>
+											<option value="Warehouse Lg">Warehouse Large</option>
+										</select>
+									</td>	
+								</tr>
+								<tr>
+									<th class="top">
+										Parcel Acreage
+									</th>	
+									<td>
+										<input id="acrefrom" class="small" placeholder="Min" />
+										<span class="pad">-</span>										
+										<input id="acreto" class="small" placeholder="Max" /><span class="last">Acres</span>
+									</td>	
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="note">(Not all parcels are assessed by acres.)</div>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										Parcels without Acreage
+									</th>	
+									<td>
+										<select id="noacre" class="max">
+											<option value="LT">Lots Only (No Acreage)</option>
+											<option value="WF">Waterfront Lots</option>
+											<option value="ALL" selected>Both</option>
+										</select>
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Market Value ($)
+									</th>	
+									<td>
+										<input id="mrktvalfrom" class="medium" placeholder="Min" />
+										<span class="pad">-</span>										
+										<input id="mrktvalto" class="medium" placeholder="Max" />
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Sale Price ($)
+									</th>	
+									<td>
+										<input id="salepricefrom" class="medium" placeholder="Min" />
+										<span class="pad">-</span>										
+										<input id="salepriceto" class="medium" placeholder="Max" />
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Sale Date Range
+									</th>	
+									<td>
+										<input id="saledatefrom" />
+										<span class="pad">-</span>										
+										<input id="saledateto" />
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Year Built
+									</th>	
+									<td>
+										<input id="yearbuiltfrom" class="small" placeholder="Min" />
+										<span class="pad">-</span>										
+										<input id="yearbuiltto" class="small" placeholder="Max" />
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Square Feet
+									</th>	
+									<td>
+										<input id="sqftfrom" class="medium" placeholder="Min" />
+										<span class="pad">-</span>										
+										<input id="sqftto" class="medium" placeholder="Max" />
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Bedrooms
+									</th>	
+									<td>
+										<select id="bedrooms" class="max">
+											<option value="" selected>Any</option>
+											<option value="1">1 Bedroom</option>
+											<option value="2">2 Bedrooms</option>
+											<option value="3">3 Bedrooms</option>	
+											<option value="4">4 Bedrooms</option>
+											<option value="5">5 or More</option>
+										</select>
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Full Baths
+									</th>	
+									<td>
+										<select id="bathrooms" class="max">
+											<option value="" selected>Any</option>
+											<option value="1">1 Full Bath</option>
+											<option value="2">2 Full Baths</option>
+											<option value="3">3 Full Baths</option>	
+											<option value="4">4 Full Baths</option>
+											<option value="5">5 or More</option>
+										</select>
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Exterior Frame
+									</th>	
+									<td>
+										<select id="exteriorframe" class="max">
+											<option value="" selected>Any</option>
+											<option value="ALUM,VINYL">Alum,Vinyl</option>
+											<option value="BLOCK">Block</option>
+											<option value="BRICK">Brick</option>
+											<option value="GLASS">Glass</option>
+											<option value="LOG">Log</option>
+											<option value="METAL">Metal</option>
+											<option value="SIDING">Siding</option>
+											<option value="STONE">Stone</option>
+											<option value="STUCCO">Stucco</option>
+											<option value="WOOD">Wood</option>
+										</select>	
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Story Type
+									</th>	
+									<td>
+										<select id="storytype" class="max">
+											<option value="" selected>Any</option>
+											<option value="01">1 Story</option>
+											<option value="02">1.5 Story</option>
+											<option value="03">2 Story</option>
+											<option value="04">&gt;= 2.5 Story</option>
+											<option value="05">Ranch W/BSMT</option>
+											<option value="06">A-Frame</option>
+											<option value="07">Split Level</option>
+											<option value="08">BI-Level</option>
+											<option value="09">Cape Cod</option>
+										</select>
+									</td>	
+								</tr>
+								<tr>
+									<th>
+										Sort By
+									</th>	
+									<td>
+										<select id="sortby" class="max">
+											<option value="market_value|desc" selected>Descending Market Value</option>
+											<option value="sale_date_price|desc">Descending Sale Date/Sale Price</option>
+											<option value="sale_price|desc">Descending Sale Price</option>
+											<option value="market_value|asc">Ascending Market Value</option>
+											<option value="sale_date_price|asc">Ascending Sale Date/Sale Price</option>
+											<option value="market_value|asc">Ascending Sale Price</option>
+											<option value="addr|asc">Address</option>
+										</select>	
+									</td>	
+								</tr>
+							</table>	
+							
+							<div class="textright">
+								
+								<div id="mrktanlyserror" class="searcherror"></div>
+								<div>
+									<img id="mrktanlysprogress" class="spin hidden" src="image/spin.gif" />
+									<input type="button" id="mrktanlysclear" value="Clear">&nbsp;
+									<input type="button" id="mrktanlysbtn" value="Analyze">
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+											
+				</div>
+					
+				<!-- Property Information -->
+				<div id="propdetails" class="hidden">
+								
+					<div class="shadow round fancycont first">
+					
+						<h4>Identify</h4>
+													
+						<div id="identity" class="cont">
+						</div>
+						
+						<div id="address" class="cont">
+						</div>
+						
+						<div id="ownership" class="cont">
+						</div>
+						
+						<div id="tiedtoowner" class="cont hidden">
+						</div>
+						
+						<div id="photo" class="textcenter">
+						</div>
+						
+						<div id="idlinks" class="cont">
+						</div>
+						
+						<div id="share" class="cont">
+						</div>
+													
+					</div>
+										
+					<div class="shadow round fancycont">
+					
+						<h4>Characteristics</h4>
+													
+						<div id="characteristics" class="cont">
+						</div>
+																				
+					</div>
+					
+					<div class="shadow round fancycont">
+					
+						<h4>Tax Information</h4>
+													
+						<div id="taxlinks" class="cont">
+						</div>
+																				
+					</div>
+					
+					<div class="shadow round fancycont">
+					
+						<h4>Deed Reference(s) and Sales Price</h4>
+													
+						<div id="deed" class="cont">
+						</div>
+						
+						<div id="deedlinks" class="cont">
+						</div>
+																				
+					</div>
+									
+					<div class="shadow round fancycont">
+					
+						<h4>Location and Zoning Information</h4>
+													
+						<div id="locinfo" class="cont">
+						</div>
+						
+						<div id="situsaddress" class="cont">
+						</div>
+						
+						<div id="loctoggles" class="cont">
+						</div>
+						
+						<div id="loclinks" class="cont">
+						</div>
+																				
+					</div>
+					
+					<div class="shadow round fancycont">
+					
+						<h4>Environmental Information</h4>
+						
+						<div id="envinfo" class="cont">
+						</div>
+						
+						<div id="envtoggles" class="cont">
+						</div>
+													
+						<div id="envlinks" class="cont">
+						</div>
+																											
+					</div>
+											
+				</div>	
+									
+			</div>
+	
+		<!-- The following content is not displayed at run time -->
+		<!-- JavaScript at the bottom for fast page loading -->
+						
+		<!-- Configure Dojo -->
+		<script type="text/javascript">
+			
+			var package_path = window.location.pathname.substring ( 0, window.location.pathname.lastIndexOf ( "/" ) ),
+				dojoConfig = {
+			
+					async: true,
+					packages: [
+						
+						{
+							name: "mojo",
+							location: "http://mapserver.mecklenburgcountync.gov/mojo"
+						},
+						
+						{
+							name: "cbtree",
+							location: package_path + "/js/vendor/cbtree"
+						}
+						
+					]
+				
+				};
+			
+		</script>
+							
+		<!-- Library scripts -->
+		<script src="//js.arcgis.com/3.12compact/"></script>
+      		
+		<!-- app specific scripts -->
+		<script src="js/search.js"></script><script src="js/config.js"></script><script src="js/dynamicmap.js"></script><script src="js/map.js"></script><script src="js/main.js"></script><script src="js/usng.js"></script>
+						
+       <!-- Google Analytics usage statistics -->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33761957-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		
+    </body>
+</html>

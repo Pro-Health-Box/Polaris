@@ -1,0 +1,492 @@
+// imports
+@import "frame.less";
+
+@base: #504A52;
+@bckgrnd: #ffffff; 
+@unit: 4px;
+@teal: #1D8CAA;
+@purpura: #1C0C65;
+
+//header tags
+h4 {
+	font-size: 1.4em;
+	font-weight: normal;
+	color: @bckgrnd;
+	background: @base;
+	border-top-left-radius: @unit;
+	border-top-right-radius: @unit;
+	padding: @unit/2;
+}
+
+//table styles 
+table th.fixed { 
+	width: 80px;
+}
+
+table.proptbl {
+	table-layout: fixed;
+}
+
+table.proptbl th, table.proptbl td { 
+	padding: 0.2em;
+}
+
+table.proptbl th { 
+	text-align: left; 
+	font-weight: bold;
+	font-size: 1.2em;
+	border-bottom: 2px @base solid;
+}
+
+table.proptbl th.invert { 
+	border-bottom: 0;
+	border-right: 2px @base solid;
+}
+
+table.proptbl td { 
+	background: lighten(@base, 60%); 
+	word-wrap: break-word;
+}
+
+table.boxy td, table.boxy th {
+	border: 2px @base solid;
+	padding: @unit;
+}
+
+table.boxy td:hover, table.boxy th:hover {
+	background: lighten(@base, 60%); 
+}
+
+//span styles
+span.last {
+	margin-left: @unit;
+}
+
+span.pad {
+	margin-left: @unit;
+	margin-right: @unit;
+}
+
+div.searcherror {
+	margin: 0 @unit 0 @unit; 
+	color: @warn;
+}
+
+//anchor styles
+a:link, a:visited {
+	text-decoration : none;
+	font-weight: bold;
+	color: #1D8CAA;
+	
+} 
+
+a:hover, a:visited:hover { 
+	color: #1C0C65;
+}
+
+a.btnlink:link, a.btnlink:visited {
+	color: @bckgrnd;
+	background: @teal;
+	border-radius: @unit;
+	padding: @unit;
+}
+
+a.btnlink:hover, a.btnlink:visited:hover { 
+	background: @purpura;
+}
+
+input, select {
+	border: 1px solid @base;
+	
+}
+
+//container styles
+.cont { 
+	padding: @unit; 
+}
+
+.ircont {
+	margin: 0 @unit*2 @unit*2 @unit*2;
+}
+
+.navcont {
+	padding: 6px @unit @unit @unit; 
+}
+
+.linkcont {
+	margin: 0 @unit;
+}
+
+.advisory {
+	font-weight: bold;
+	color: @advice;
+}
+
+.shadow  {
+	outline: none;
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+.round {
+	border-radius: @unit*2; 
+}
+
+.fancycont {
+	border: 1px solid @base;
+	margin: @unit*3 @unit*2 @unit*2 @unit*2;
+}
+
+.fancycont.first {
+	margin-top: @unit/2;
+}
+
+.fancycont.last {
+	margin-bottom: @unit/2;
+}
+
+.fancycont.closeable {
+	margin: @unit/2;	
+}
+
+.iphonebadge {
+	width: 50px;
+	height: 50px;
+	line-height: 40px; 
+	border-radius:99px;
+	-moz-border-radius:99px;
+	-webkit-border-radius:99px;
+	background:red;
+	color:#fff;
+	border:3px #fff solid;
+	background-color: #e7676d;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e7676d), to(#b7070a)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #e7676d, #b7070a); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -moz-linear-gradient(top, #e7676d, #b7070a); /* FF3.6 */
+	background-image: -ms-linear-gradient(top, #e7676d, #b7070a); /* IE10 */
+	background-image: -o-linear-gradient(top, #e7676d, #b7070a); /* Opera 11.10+ */
+	background-image: linear-gradient(top, #e7676d, #b7070a);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e7676d', EndColorStr='#b7070a'); 
+	-webkit-box-shadow: 0px 2px 4px #000000; /* Saf3-4 */
+	-moz-box-shadow: 0px 2px 4px #000000; /* FF3.5 - 3.6 */
+	box-shadow: 0px 2px 4px #000000; /* Opera 10.5, IE9, FF4+, Chrome 10+ */
+	display:inline-block;
+	padding:2px 2px 2px 2px ;
+	margin:3px;
+	font-family:arial;
+	font-weight:bold;
+	text-align: center;
+	cursor: pointer;
+}
+
+.iphonebadge:hover { //search button focus and hover
+	background-image: linear-gradient(top, #e7676d, @bckgrnd);
+}
+
+//-------------------//
+// Parent Containers // 
+//-------------------//
+#header {
+	height: 58px;
+	background: @bckgrnd url('../image/polaris3g_banner_small.png') left center no-repeat;
+}
+
+#menu {
+	background: lighten(@base, 60%);
+}
+
+#aside {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 400px;
+	z-index: 40;
+	overflow: auto;
+	box-sizing: content-box; /* hack for ie9 box-sizing doubling the scrollbar width */
+}
+
+#map {
+	height: 100%;
+	margin: 0 0 0 400px;
+	background-color: @bckgrnd;
+}
+
+//-----------------//
+// Data Containers // 
+//-----------------//
+
+#mobilemap {
+	display: none;
+}
+
+#error {
+	font-size: 1.8em;
+}
+
+//----------------//
+// Map Containers // 
+//----------------//
+
+//controls over the map
+#oldbrowserwarn  { //old browser warning container 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	background-color: @caution; 
+	font-size: 0.8em;
+	z-index: 41;
+}
+
+#map_zoom_slider { //esri javascript api zoom slider control
+	top: 275px; 
+	left: 1px; 
+	margin: @unit;
+	outline: none;
+	box-shadow: 0 0 8px @base;
+}
+
+#basemapswitch { //basemap toggle switch
+	position: absolute; 
+	right: 0;
+	top: 0;
+	z-index: 20;
+	margin: @unit;
+	
+}
+
+#toolbox {
+	position: absolute; 
+	left: 1px;
+	top: 74px;
+	margin: @unit @unit @unit 402px ;
+	z-index: 40;
+}
+
+#searching {
+	 width:100px;
+	 height:100px;
+	 position: fixed;
+	 top: 50%;
+	 left: 50%;
+	 margin-top: -50px;
+	 margin-left: 200px;
+	 z-index: 41;
+}
+
+#scrolltodataleft {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 40;
+	display: none;
+}
+
+#scrolltodataright {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 40;
+	display: none;
+}
+
+//search styles 
+#searchcont {
+	position: absolute; 
+	left: 401px; 
+	top: 0; 
+	width: 435px;	
+	margin: @unit;
+	border: 1px solid @base;
+	background: @bckgrnd;
+	z-index: 41;
+}
+
+#searchoptions {
+	border-top: 1px solid @base;
+	background: lighten(@base, 60%);
+}
+
+#mainsearchcont {
+	margin: @unit 57px @unit @unit;
+	height: 25px;
+	font-size: 1.3em;
+}
+
+#searchclear, #searchprogress { //search box clear and progress
+	position: absolute; 
+	top:0;
+	right: 29px;
+	width: 28px;
+	height: 33px;
+}
+
+#searchclear { //search box clear
+	background: @bckgrnd url('../image/grey-close.png') center no-repeat;
+	cursor: pointer;
+}
+
+#searchprogress { //search box progress
+	background: @bckgrnd url('../image/spin.gif') center no-repeat;
+	pointer-events: none;
+}
+
+#searchbtn {
+	position: absolute; 
+	top:0;
+	right:0;
+	width : 29px;
+	height: 33px;
+	background: @base url('../image/search.png') center no-repeat;
+	cursor: pointer;
+	transition: all 0.25s ease-in-out;
+}
+
+#searchclear:hover, #searchbtn:hover { //search button focus and hover
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+#searchhelp {
+	padding: 0 @unit @unit @unit;
+}
+
+//----------------//
+// Mojo Overrides // 
+//----------------//
+
+.mojoSearchResult {
+	border: solid 2px @base;
+	box-shadow: 0 0 @unit*2 @base;
+	font-size: 0.9em;
+}
+
+.mojoSearchResult:hover {
+	background: lighten(@base, 60%); 
+}
+
+//----------------//
+// Dojo Overrides // 
+//----------------//
+
+.tundra .dijitComboBox .dijitButtonNode {
+	padding: 0.2em 0.1em;
+}
+	
+.tundra .dijitInputContainer {
+	padding: 2px;
+	font-size: 1.1em;
+}
+
+.dijitPlaceHolder {
+	margin: 2px;
+	font-size: 1.0em;
+	font-style: normal; 
+	font-weight: normal; 
+}
+
+//media queries
+@media screen and (max-width: 1060px) {   
+
+	input, select {
+		font-size: 1.2em;
+		padding: 4px;
+	}
+	
+	a:link, a:visited {
+		font-size: 1.2em;		
+	}
+	
+	a.btnlink:link, a.btnlink:visited {
+		font-size: 1.0em;
+	}
+			
+	.tundra .dijitComboBox .dijitButtonNode {
+		padding: 0.4em 0.1em;
+	}
+		
+	.tundra .dijitInputContainer {
+		padding: 4px;
+		font-size: 1.2em;
+	}
+
+	.dijitPlaceHolder {
+		margin: 4px;
+	}
+			
+	#searchcont {
+		right: 0;
+		width: auto;
+		margin: @unit/2;
+	}
+
+	#mainsearchcont {
+		margin: 0 57px 0 0;	
+	}
+	
+	#mainsearchcont, #searchclear, #searchprogress, #searchbtn {
+		height: 31px;
+	}
+	
+	#basemapswitch {
+		margin: @unit/2;
+	}
+	
+	#toolbox {
+		margin: @unit/2 @unit/2 @unit/2 402px ;
+	}
+	
+	#toolbox, #basemapswitch {
+		top: 62px;
+	} 
+	
+	#map_zoom_slider {
+		top: 252px;
+		margin: @unit/2;
+	}
+	
+	#searching {
+		margin-left: 150px;
+	}
+				
+}
+
+@media screen and (max-width: 920px) {
+
+	#map {
+		height: 100%;
+		margin: 0;
+	}
+	
+	#searchcont {
+		left: 0;
+	}
+	
+	#toolbox {
+		margin-left: 1px;
+	}
+	
+	#searching {
+		margin-top: -65px;
+		margin-left: -50px;
+	}
+				
+	#aside {
+		top: 0;
+		position: relative;
+		width: 100%;
+	}
+	
+	#header, #menu {
+		display: none;
+	}
+										
+}
+
+@media screen and (max-width: 450px) {
+	
+	.dijitPlaceHolder {
+		font-size: 0.7em;
+		margin: 6px 4px;
+	}
+	
+	
+}
