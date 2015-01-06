@@ -146,7 +146,7 @@ function layerTreeLegendInit() {
 			// Initialize layer tree
 			if ( !layerListTree ) {
 			
-				var overlay_store = new ItemFileWriteStore ( { url: "data/overlaysclassic.json?foo=1009" } );
+				var overlay_store = new ItemFileWriteStore ( { url: "data/overlaysclassic.json?foo=1011" } );
 			
 				layerListTree = new Tree ( { 
 			

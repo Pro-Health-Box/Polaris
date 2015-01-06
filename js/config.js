@@ -42,7 +42,7 @@ var config = {
 				url: "http://gisags03/ArcGIS03/rest/services/classic/MapServer", 
 				opacity: 1.0,
 				visible: true,
-				visiblelyrs: [ 22, 24, 26, 62, 67, 69, 82, 83, 84, 86, 88, 90, 92, 94, 96, 98, 100 ]
+				visiblelyrs: [ 22, 24, 26, 63, 68, 70, 84, 85, 86, 88, 90, 92, 94, 96, 98, 100, 102 ]
 			},
 			
 			aerial: 
@@ -58,7 +58,7 @@ var config = {
 				url: "http://gisags03/ArcGIS03/rest/services/classic/MapServer", 
 				opacity: 1.0,
 				visible: false,
-				visiblelyrs: [ 23, 25, 26, 62, 68, 70, 82, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101 ]
+				visiblelyrs: [ 23, 25, 26, 63, 69, 71, 84, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103 ]
 			}		
 			
 		},
@@ -79,7 +79,7 @@ var config = {
 				url: "http://gisags03/ArcGIS03/rest/services/classic/MapServer", 
 				opacity: 1.0, 			
 				visible: true,
-				visiblelyrs: [ 0, 1, 2, 3, 26, 46, 47, 80 ]
+				visiblelyrs: [ 0, 1, 2, 3, 26, 46, 47, 82 ]
 			},
 
 			overlays_aerial:  
@@ -87,7 +87,7 @@ var config = {
 				url: "http://gisags03/ArcGIS03/rest/services/classic/MapServer", 
 				opacity: 1.0, 			
 				visible: false,
-				visiblelyrs: [ 0, 1, 2, 4, 26, 46, 47, 81 ]
+				visiblelyrs: [ 0, 1, 2, 4, 26, 46, 47, 83 ]
 			}				
 							
 		}		

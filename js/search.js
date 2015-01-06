@@ -829,7 +829,7 @@ function finder ( data, container ) {
 											params: { 
 												taxpid: lang.trim ( item.pid ), 
 												groundpid: lang.trim ( item.common_pid ),
-												removegraphics: ( data.stname ? [ ] : [ "buffer", "road", "parcelpt" ] ),
+												removegraphics: [ "buffer", "road", "parcelpt" ],
 												zoom: ( data.hasOwnProperty ( "zoom" ) ? data.zoom : true ),
 												backtoresults: true		
 											},
@@ -1562,7 +1562,8 @@ function idLayers ( data ) {
 					"15": "census_tracts_2010", 
 					"16": "enggrid_p",
 					"17": "prelimplans_l",
-					"18": 46
+					"18": 46,
+					"19": "blocks2010_p"
 					
 				};
 							
@@ -1580,6 +1581,7 @@ function idLayers ( data ) {
 					case "14": //water quality buffer buffers
 					case "15": //census tract
 					case "16": //eng grid
+					case "19": //census block groups
 														
 						script.get ( config.web_service_rest + "v1/ws_geo_sdeattributequery.php", {
 							jsonp: "callback",
@@ -1637,7 +1639,7 @@ function idLayers ( data ) {
 							query: { 
 								table: polyTables[ data.lyridx ], 
 								fields: "*",
-								parameters: "ST_Intersects(ST_Buffer ( st_point ( " + data.x + "," + data.y + ", 2264), 10 ), shape )",					
+								parameters: "ST_Intersects(ST_Buffer ( st_point ( " + data.x + "," + data.y + ", 2264), 20 ), shape )",					
 								source: "gis"
 							}
 						} ).then ( function ( gisdata ) { processIDLayers ( ( gisdata.length > 0 ? gisdata [ 0 ] : null ), data.lyridx ); } );

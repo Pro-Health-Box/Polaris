@@ -72,9 +72,9 @@
 			name: "Boundaries", 
 			type: "group", 
 			show: true,
-			streets: [ 57, 32, 39, 80, 33, 43, 44, 42  ], 
-			aerial: [ 58, 32, 39, 81, 33, 43, 44, 42 ], 
-			trans: [ 27, 79 ],
+			streets: [ 58, 32, 39, 82, 33, 43, 44, 42  ], 
+			aerial: [ 59, 32, 39, 83, 33, 43, 44, 42 ], 
+			trans: [ 27, 81 ],
 			children: [
 			
 				{ _reference: "annex" },
@@ -99,8 +99,8 @@
 			{ 
 				id: "bldgs", 
 				name: "Building Footprints", 
-				streets: [ 57 ],
-				aerial: [ 58 ]				
+				streets: [ 58 ],
+				aerial: [ 59 ]				
 			},
 			
 			{ 
@@ -120,14 +120,14 @@
 			{ 
 				id: "sphrinflu", 
 				name: "Spheres of Influence (City ETJs)", 
-				trans: [ 79 ]
+				trans: [ 81 ]
 			},
 			
 			{ 
 				id: "taxparcels", 
 				name: "Tax Parcels", 
-				streets: [ 80 ],
-				aerial: [ 81 ],
+				streets: [ 82 ],
+				aerial: [ 83 ],
 				checked: true
 			},
 				
@@ -148,7 +148,8 @@
 			{ 
 				id: "zip", 
 				name: "Zip Code Boundaries", 
-				streets: [ 42 ]		
+				streets: [ 42 ],
+				aerial: [ 42 ]				
 			},
 			
 		{ 
@@ -156,9 +157,9 @@
 			name: "Environmental", 
 			type: "group", 
 			show: true,
-			streets: [ 59, 71, 72, 50 ],
-			aerial: [ 59, 71, 72, 50 ],
-			trans: [ 63, 64, 65, 66, 60, 61 ],			
+			streets: [ 60, 72, 73, 50 ],
+			aerial: [ 60, 72, 73, 50 ],
+			trans: [ 64, 65, 66, 67, 61, 62 ],			
 			children: [
 			
 				{ _reference: "fldp" }, 
@@ -175,38 +176,38 @@
 			{ 
 				id: "fldp", 
 				name: "Community & FEMA Floodplains, Floodways", 
-				trans: [ 63, 64, 65, 66 ],
+				trans: [ 64, 65, 66, 67 ],
 				clone: true 
 			},
 			
 			{ 
 				id: "postconstdist", 
 				name: "Post Construction Districts", 
-				streets: [ 59 ],
-				aerial: [ 59 ],
+				streets: [ 60 ],
+				aerial: [ 60 ],
 				clone: true 
 			},
 			
 			{ 
 				id: "postconstbuff", 
 				name: "Post Construction Buffers", 
-				trans: [ 60 ],
+				trans: [ 61 ],
 				clone: false 
 			},
 				
 			{ 
 				id: "strmwtrsheds", 
 				name: "Stream Watersheds", 
-				streets: [ 71 ],
-				aerial: [ 71 ],
+				streets: [ 72 ],
+				aerial: [ 72 ],
 				clone: true 
 			},
 				
 			{ 
 				id: "drnkwtrsheds", 
 				name: "Regulated Drinking Watersheds", 
-				streets: [ 72 ],
-				aerial: [ 72 ],
+				streets: [ 73 ],
+				aerial: [ 73 ],
 				clone: true 
 			},
 			
@@ -221,7 +222,7 @@
 			{ 
 				id: "wtrqulbuff", 
 				name: "Water Quality Buffers(SWIM)", 
-				trans: [ 61 ],
+				trans: [ 62 ],
 				clone: true 		
 			},
 		
@@ -312,9 +313,9 @@
 			name: "Others", 
 			type: "group",
 			show: true,			
-			streets: [ 30, 31, 46, 47, 48, 49, 34, 45, 52, 53, 54, 55, 74, 78 ],
-			aerial: [ 30, 31, 46, 47, 48, 49, 34, 45, 52, 53, 54, 55, 74, 78 ],
-			trans: [ 75, 76, 77, 73 ],
+			streets: [ 30, 31, 46, 47, 48, 49, 34, 45, 52, 53, 54, 55, 75, 80 ],
+			aerial: [ 30, 31, 46, 47, 48, 49, 34, 45, 52, 53, 54, 55, 75, 80 ],
+			trans: [ 76, 77, 78, 74 ],
 			children: [
 			
 				{ _reference: "censustracts" }, 
@@ -329,6 +330,8 @@
 				{ _reference: "countyprop" },
 				{ _reference: "cityprop" },
 				{ _reference: "cmsprop" },
+				{ _reference: "parkprop" },
+				{ _reference: "grnwys" },
 				{ _reference: "monuments" },
 				{ _reference: "geodeticbuff" }
 			
@@ -388,33 +391,46 @@
 			{ 
 				id: "salesbyyear", 
 				name: "Sales by Deed Year", 
-				streets: [ 74 ],
-				aerial: [ 74 ]
+				streets: [ 75 ],
+				aerial: [ 75 ]
 			},
 			
 			{ 
 				id: "landuse", 
 				name: "Tax Parcel Landuse", 
-				streets: [ 78 ],
-				aerial: [ 78 ]
+				streets: [ 80 ],
+				aerial: [ 80 ]
 			},
 			
 			{ 
 				id: "countyprop", 
 				name: "County owned Properties", 
-				trans: [ 75 ]
+				trans: [ 76 ]
 			},
 			
 			{ 
 				id: "cityprop", 
 				name: "City owned Properties", 
-				trans: [ 76 ]
+				trans: [ 77 ]
 			},
 			
 			{ 
 				id: "cmsprop", 
 				name: "CMS owned Properties", 
-				trans: [ 77 ]
+				trans: [ 78 ]
+			},
+			
+			{ 
+				id: "parkprop", 
+				name: "Park Properties", 
+				trans: [ 79 ]
+			},
+			
+			{ 
+				id: "grnwys", 
+				name: "Greenways", 
+				streets: [ 57 ],
+				aerial: [ 57 ]
 			},
 			
 			{ 
@@ -427,7 +443,7 @@
 			{ 
 				id: "geodeticbuff", 
 				name: "2000ft Geodetic Buffers", 
-				trans: [ 73 ]
+				trans: [ 74 ]
 			}
 															
 	]
