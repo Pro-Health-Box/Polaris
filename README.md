@@ -6,7 +6,7 @@ You can get the full source code of Polaris, Mecklenburg County's Property Owner
 The project is written using:
 * ESRI's ArcGIS Server JavaScript API
 * Dojo Toolkit
-* [Dijit Checkbox] Tree http://www.thejekels.com/dojo/cbtree_AMD.html
+* [Dijit Checkbox Tree] (http://www.thejekels.com/dojo/cbtree_AMD.html)
 
 
 
