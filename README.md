@@ -9,6 +9,8 @@ The project is written using:
 * <a href="http://www.thejekels.com/dojo/cbtree_AMD.html" target="_blank">Dijit Checkbox Tree</a>
 * Mojo Tools
 
+#Capabilities
+
 
 
 

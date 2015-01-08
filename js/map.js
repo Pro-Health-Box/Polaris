@@ -154,12 +154,44 @@ function delLocationGraphic ( ) {
 	if ( locationGraphic ) { 
 	
 		var selectionLayer = agsServices[ serviceNames.indexOf ( "selection" ) ];
+	
+		var selectionLayer = agsServices[ serviceNames.indexOf ( "selection" ) ];
 		selectionLayer.remove ( locationGraphic );
 		locationGraphic = null;	
 	
 	}
 
 }	
+
+function delParcelGraphic ( ) {
+
+	if ( parcelGraphic ) {
+	
+		var selectionLayer = agsServices[ serviceNames.indexOf ( "selection" ) ];
+					
+		selectionLayer.remove ( parcelGraphic );
+		parcelGraphic = null;	
+	
+	}
+
+}
+
+function delHelperGraphics ( removegraphics ) {
+
+	for ( var g = helperGraphics.length -1; g > -1; g-- ) { 
+				
+		if ( array.indexOf ( removegraphics, helperGraphics[ g ].attributes.type ) > -1 ) {
+		
+			var selectionLayer = agsServices[ serviceNames.indexOf ( "selection" ) ];
+			
+			selectionLayer.remove ( helperGraphics[ g ] );
+			helperGraphics.splice ( g, 2 );
+		
+		}
+
+	}	
+
+}
 
 //add graphics to map
 function addGraphics ( data ) {
@@ -187,15 +219,7 @@ function addGraphics ( data ) {
 		//remove helper graphics
 		if ( data.removegraphics.length > 0 ) { 
 			
-			for ( var g = helperGraphics.length -1; g > -1; g-- ) { 
-				
-				if ( array.indexOf ( data.removegraphics, helperGraphics[ g ].attributes.type ) > -1 ) {
-					
-					selectionLayer.remove ( helperGraphics[ g ] );
-					helperGraphics.splice ( g, 2 );
-				}
-
-			}			
+			delHelperGraphics ( data.removegraphics );
 					
 		}	
 			
@@ -215,9 +239,7 @@ function addGraphics ( data ) {
 				} ).then ( function ( parceldata ) {
 				
 					//remove parcel graphic
-					if ( parcelGraphic ) 
-						selectionLayer.remove ( parcelGraphic );
-					parcelGraphic = null;	
+					delParcelGraphic ( );
 				
 					if ( parceldata.length > 0 ) {
 					

@@ -343,7 +343,10 @@ function setIdentity ( data ) {
 				query ( "#tiedtoowner" ).addClass ( "hidden" );
 				
 			}
-						
+			
+			//add unselct button
+			query ( "#unselectprop" ).innerHTML ( "<a href='javascript:void(0);' onclick='unselectProp();' class='btnlink'>Unselect Property</a>" );
+									
 			//add property photo
 			if ( propPhotoGallery ) {			
 				
@@ -1001,6 +1004,42 @@ require ( [
 		
 				
 	} );	
+
+}
+
+function unselectProp() {
+
+	require ( [ 
+		"esri/geometry/Extent", 
+		"dojo/_base/connect",
+		"dojo/hash", 
+		"dojo/io-query", 		
+		"dojo/query", 
+		"dojo/NodeList-manipulate" ] , function ( Extent, connect, Hash, ioQuery, query ) {
+	
+		//remove helper graphics
+		delHelperGraphics ( [ "parcelpt", "buffer", "road" ] );
+	
+		//remove location graphic
+		delLocationGraphic ( );
+	
+		//remove parcel graphic
+		delParcelGraphic ( );
+		
+		//zoom to full extent
+		map.setExtent ( new Extent ( config.initial_extent ) );
+		
+		selectedAddress = { };
+		
+		//set hash
+		Hash ( ioQuery.objectToQuery ( { } ) );
+		
+		map.infoWindow.hide();
+		
+		//show layers div
+		showDiv ( "layers" );
+				
+	} );
 
 }
 
